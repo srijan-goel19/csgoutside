@@ -1,0 +1,338 @@
+/* style.css */
+
+/* .container {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+@font-face {
+  font-family: 'Eurostile';
+  src: url('eurostile.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body.not-planted{
+  background-color: rgb(11, 11, 11);
+  color: white;
+  overflow: hidden; /* THIS HIDES THE SCROLL BAR MAKING THE USER UNABLE TO SCROLL/ZOOM */
+  touch-action: none; /* THIS HIDES THE SCROLL BAR MAKING THE USER UNABLE TO SCROLL/ZOOM */
+  font-family: 'Eurostile', sans-serif;
+  margin-top: 5px;
+  animation: none;
+}
+
+body.planted{
+  background-color: rgb(11, 11, 11);
+  /* background-color: #820808; */
+  /* transition: background-color 1s ease-in-out; */
+  animation: blink 2s infinite;
+  color: white;
+  overflow: hidden; /* THIS HIDES THE SCROLL BAR MAKING THE USER UNABLE TO SCROLL/ZOOM */
+  touch-action: none; /* THIS HIDES THE SCROLL BAR MAKING THE USER UNABLE TO SCROLL/ZOOM */
+  font-family: 'Eurostile', sans-serif;
+  margin-top: 5px;
+}
+
+body.winners{
+  animation: none;
+  background-color: #025c0f;
+}
+
+body.losers{
+  animation: none;
+  background-color: #820808;
+}
+
+.lobby-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.player-info,
+.team-selection {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.player-info label,
+.team-selection label {
+  margin-right: 10px;
+}
+
+input[type="text"],
+select,
+input[type="file"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  width: inherit;
+}
+
+.upload-player-btn {
+  background-color: #820808;
+  color: #fff;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-player-btn-uploaded {
+  background-color: #025c0f;
+  color: #fff;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-player-btn {
+  background-color: #820808;
+  color: #fff;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-player-btn:hover {
+  background-color: #820808;
+}
+
+.create-player-btn-disabled {
+  background-color: #ccc;
+  color: #999;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: not-allowed;
+}
+
+.column {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 95%;
+  text-align: center;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.timer-container p{
+  margin: 0px;
+}
+
+.info-container {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.info-column {
+  /* margin: 10px; */
+  /* padding: 10px; */
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
+  font-size: 25px;
+  text-align: center;
+  display: table-cell;
+}
+
+.info-column img{
+  width: 25px;
+  height: 25px;
+}
+
+.info-container > div, p {
+  display: table-cell;
+  vertical-align: top;
+  table-layout: fixed;
+}
+
+.health-bar-container {
+  margin: auto;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.health-bar {
+  position: relative;
+  height: 40px;
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.health-value {
+  height: 100%;
+  transition: width 0.5s ease-in-out;
+  background-color: hsl(119, 100%, 50%); /* dynamically updated in HealthBar.js to match health value */
+  width: 100%; /* dynamically updated in HealthBar.js to match health value */
+}
+
+.health-text-overlay {
+  position: absolute;
+  font-size: 30px;
+  color: black;
+  top: -4%;
+  right: 5%;
+  /* transform: translate(-50%, -50%); */
+  z-index: 2;
+}
+
+.vestigial {
+  display: none;
+}
+
+.video-container-wrapper {
+  position: fixed;
+  bottom: 0;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  /* object-fit: cover; /* crop video to fill container */
+  /* or */
+  object-fit: contain; /* scale video to fit within container */
+}
+
+#shoot-button {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 20%;
+  background-color: transparent;
+  color: transparent;
+  padding: 0px;
+  border: none;
+}
+
+#shoot-button-disabled {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 20%;
+  background-color: transparent;
+  color: transparent;
+  padding: 0px;
+  border: none;
+}
+
+#shoot-button img {
+  width: 100%; /* set image width to 100% of button width */
+  height: 100%; /* set image height to 100% of button height */
+}
+
+#crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 0px;
+  background-color: transparent;
+  color: transparent;
+  padding: 0px;
+  border: none;
+}
+
+#cross-hair img {
+  width: 100%; /* set image width to 100% of button width */
+  height: 100%; /* set image height to 100% of button height */
+}
+
+.dead-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 15px;
+}
+
+.dead-container img {
+  width: 80%;
+  height: auto;
+  animation: fadeinout 5s ease-in-out infinite;
+}
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes blink {
+  50% {
+    background-color: #820807;
+  }
+}
+
+.game-over-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* gap: 20px; */
+  font-size: 15px;
+}
+
+.game-over-container img{
+  width: 15px;
+  /* height: 20px; */
+}
