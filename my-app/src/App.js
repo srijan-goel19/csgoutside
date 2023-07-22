@@ -139,7 +139,7 @@ function App() {
 
   return (
       <div>
-        <h1 className="text-center">CSGOutside</h1>
+        <h1 className="text-center">CSGOInside</h1>
         {isGameOver ? (
           <GameOver game_data={game_data} Player={currentPlayer} isGameOver={isGameOver}/>
         ) : isLobby && !isReady ? (

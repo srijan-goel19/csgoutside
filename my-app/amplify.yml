@@ -1,0 +1,16 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands: 
+        - 'cd my-app'
+        - 'npm install'
+        - 'npm run build'
+  artifacts:
+    baseDirectory: ./my-app/build
+    files:
+      - '**/*'
+  cache:
+    paths: 
+        - 'cd my-app'
+        - 'node_modules/**/*'
