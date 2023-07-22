@@ -8,9 +8,20 @@ import HealthBar from './HealthBar';
 import Dead from './Dead';
 import GameOver from './GameOver';
 import './style.css';
+import "@aws-amplify/ui-react/styles.css";
+import {
+  withAuthenticator,
+  Button,
+  Heading,
+  Image,
+  View,
+  Card,
+} from "@aws-amplify/ui-react";
 
 
-function App() {
+
+
+function App({ signOut }) {
   let videoRef = useRef(null);
   let photoRef = useRef(null);
   const [isLobby, setIsLobby] = useState(true); // Starts from lobby screen
@@ -139,6 +150,7 @@ function App() {
 
   return (
       <div>
+        <Button onClick={signOut}>Sign Out</Button>
         <h1 className="text-center">CSGOInside</h1>
         {isGameOver ? (
           <GameOver game_data={game_data} Player={currentPlayer} isGameOver={isGameOver}/>
@@ -166,4 +178,4 @@ function App() {
 );
 }
 
-export default App;
+export default withAuthenticator(App);
